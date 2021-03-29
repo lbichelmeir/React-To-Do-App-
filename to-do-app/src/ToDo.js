@@ -1,23 +1,26 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 function TodosComponent() {
     const [currentTodo, setCurrentTodo] = useState("")
-    const [todos, setTodos] = useState([
-        {
-            todo: "learn React",
-            isCompleted: false
-          },
-          {
-            todo: "buy oat milk",
-            isCompleted: true
-          },
+    const [todos, setTodos] = useState([])
+    
+    // IMPLEMENTING LOCAL STORAGE: PERSISTING DATA
 
-          {
-            todo: "walk the dogs",
-            isCompleted: false
-          }
+    // only run once the first time this component is rendered
+    useEffect(() => {
+        if (localStorage.getItem('todosData')) {
+        setTodos(JSON.parse(localStorage.getItem("todosData")))
+        }
+    }, [])
+    // run every time our todos state changes
+        useEffect(() => {
+        localStorage.setItem('todosData', JSON.stringify(todos))
+        }, [todos])
 
-    ])
+
+
+
+    
 
     function createNewTodo(currentTodo) {
         let todosArray = [...todos]
@@ -94,5 +97,23 @@ function TodosComponent() {
 }
 
 export default TodosComponent;
+
+
+// const [todos, setTodos] = useState([
+    //     {
+    //         todo: "learn React",
+    //         isCompleted: false
+    //       },
+    //       {
+    //         todo: "buy oat milk",
+    //         isCompleted: true
+    //       },
+
+    //       {
+    //         todo: "walk the dogs",
+    //         isCompleted: false
+    //       }
+
+    // ])
 
 {/* <p> {todo.todo}</p> */}

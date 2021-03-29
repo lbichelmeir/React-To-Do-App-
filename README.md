@@ -10,5 +10,6 @@ I created a To Do app in React following a tutorial by Enlight (https://enlight.
 
 ## Next Steps
 - [X] As a challenge, I will be implementing **local storage** (so that the data persists)
-### Update
+
+## Work Log
 I was able to successfully implement **local storage** on my own! I had some help following the logic from this tutorial: https://www.youtube.com/watch?v=uRDujdtVfJs 
